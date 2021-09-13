@@ -61,6 +61,7 @@
   "dependencies": {
     "commander": "^8.1.0",
     "fast-glob": "^3.2.7",
+    "mkdirp": "^1.0.4",
     "protocol-buffers-schema": "^3.6.0"
   }
 }
