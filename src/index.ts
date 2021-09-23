@@ -19,12 +19,15 @@ export async function generateIndex(
     package: [],
     protoPath: [],
   };
-  const protos = await fg(source);
+  const protos = await fg(source, {
+    absolute: true
+  });
+  const _root = root ? path.resolve(root) : '';
   const nestOptions = await Promise.all(
     protos.map(async (p) => {
       const c = await _readFile(p, "utf-8");
       const s = schemaParser.parse(c);
-      const protoPath = root ? path.relative(p,root) : path.basename(p);
+      const protoPath = _root ? path.relative(p,_root) : path.basename(p);
       return { package: s.package, protoPath };
     })
   );
