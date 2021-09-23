@@ -27,7 +27,7 @@ export async function generateIndex(
     protos.map(async (p) => {
       const c = await _readFile(p, "utf-8");
       const s = schemaParser.parse(c);
-      const protoPath = _root ? path.relative(p,_root) : path.basename(p);
+      const protoPath = _root ? path.relative(_root,p) : path.basename(p);
       return { package: s.package, protoPath };
     })
   );
