@@ -12,7 +12,8 @@ interface NestOptions {
 }
 
 export async function generateIndex(
-  source: string | string[]
+  source: string | string[],
+  root?: string
 ): Promise<NestOptions> {
   const result = {
     package: [],
@@ -23,7 +24,7 @@ export async function generateIndex(
     protos.map(async (p) => {
       const c = await _readFile(p, "utf-8");
       const s = schemaParser.parse(c);
-      const protoPath = path.basename(p);
+      const protoPath = root ? path.relative(p,root) : path.basename(p);
       return { package: s.package, protoPath };
     })
   );
@@ -49,9 +50,10 @@ module.exports = {
 
 export async function generateIndexFile(
   source: string | string[],
-  dest: string
+  dest: string,
+  root?: string
 ): Promise<void> {
-  const o = await generateIndex(source);
+  const o = await generateIndex(source, root);
   const content = generateIndexString(o);
   await _writeFile(path.join(dest, "index.js"), content);
 }
