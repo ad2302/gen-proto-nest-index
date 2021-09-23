@@ -32,7 +32,9 @@ export async function generateIndex(
     })
   );
   nestOptions.forEach((o) => {
-    result.package.push(o.package);
+    if (o.package){
+      result.package.push(o.package);
+    }
     result.protoPath.push(o.protoPath);
   });
   return result;
