@@ -3,7 +3,7 @@ import fg from "fast-glob";
 import { promisify } from "util";
 import { readFile, writeFile } from "fs";
 import path from "path";
-import * as pathExists from 'path-exists';
+import pathExists from 'path-exists';
 
 const _readFile = promisify(readFile);
 const _writeFile = promisify(writeFile);
