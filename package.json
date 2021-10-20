@@ -60,7 +60,7 @@
   "dependencies": {
     "commander": "^8.1.0",
     "fast-glob": "^3.2.7",
-    "path-exists": "^5.0.0",
+    "path-exists": "^4.0.0",
     "mkdirp": "^1.0.4",
     "protocol-buffers-schema": "^3.6.0"
   }
