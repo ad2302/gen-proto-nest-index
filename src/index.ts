@@ -56,7 +56,7 @@ module.exports = {
 
 export function generateIndexStringTs(options: NestOptions, middleContent: string): string {
 const c = `
-import * as path from 'path";
+import * as path from 'path';
 ${middleContent}
 export const nestOptions = {
   package: ${JSON.stringify(options.package)},
